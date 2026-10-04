@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f5">
+    <meta name="description" content="A little clarity for your writing. Count words, explore keyword density, and estimate reading and speaking time, privately in your browser.">
+    <title>Wordwell — A little clarity for your writing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#text-input">Skip to editor</a>
+    <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+      <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6M14 10v6"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24"><path d="M12 6v14M3 4h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5v14h-5a4 4 0 0 0-4 2 4 4 0 0 0-4-2H3Z"/></symbol>
+      <symbol id="icon-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 4-5 8-8 9-3-1-8-5-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Wordwell home"><span class="brand-mark" aria-hidden="true">w<span>•</span></span>wordwell<span class="brand-period">.</span></a>
+        <nav aria-label="Main navigation"><a class="nav-active" href="#workspace" aria-current="page">Word counter</a><a href="#how-it-works">How it works</a></nav>
+        <span class="privacy-badge"><span class="status-dot"></span>Just you and your words</span>
+      </div>
+    </header>
+
+    <main id="workspace" class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div><p class="eyebrow"><span></span>YOUR EVERYDAY WRITING COMPANION</p><h1 id="page-title">Make every word <em>count.</em></h1><p class="intro-description">A little clarity for your writing. Type, paste, and find your flow.</p></div>
+        <div class="local-note"><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg><span>100% private.<br><strong>Always in your browser.</strong></span></div>
+      </section>
+
+      <section class="primary-stats" aria-label="Live text statistics">
+        <div class="stat-card featured-stat"><div class="stat-label">Words<span class="live-tag"><span class="status-dot"></span>LIVE</span></div><p class="stat-number" id="word-count">0</p><span class="stat-caption">One word at a time.</span></div>
+        <div class="stat-card"><div class="stat-label">Characters</div><p class="stat-number" id="character-count">0</p><span class="stat-caption">Including spaces</span></div>
+        <div class="stat-card"><div class="stat-label">Characters</div><p class="stat-number" id="character-no-spaces">0</p><span class="stat-caption">Without whitespace</span></div>
+        <div class="stat-card compact-stat"><div class="stat-label">Sentences</div><p class="stat-number" id="sentence-count">0</p><span class="stat-caption">Thoughts, completed.</span></div>
+        <div class="stat-card compact-stat"><div class="stat-label">Paragraphs</div><p class="stat-number" id="paragraph-count">0</p><span class="stat-caption">Room to breathe.</span></div>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="editor-card" aria-labelledby="editor-heading">
+          <div class="editor-toolbar"><div class="editor-heading"><span class="editor-symbol" aria-hidden="true">T<span>↗</span></span><h2 id="editor-heading">Your writing space</h2></div><div class="editor-actions"><button id="copy-button" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#icon-copy"/></svg>Copy</button><span class="action-divider" aria-hidden="true"></span><button id="clear-button" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#icon-trash"/></svg>Clear</button></div></div>
+          <label class="sr-only" for="text-input">Text to analyze</label>
+          <textarea id="text-input" placeholder="Good writing starts with a single word.&#10;&#10;Type or paste your text here…" aria-describedby="editor-help" spellcheck="true"></textarea>
+          <div class="editor-bottom"><span id="editor-help"><span class="status-dot"></span>Counts update as you write</span><button id="sample-button" class="text-button" type="button">Try a sample<svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button></div>
+          <div class="goal-panel"><div class="goal-top"><label for="word-goal">A little writing goal</label><select id="word-goal"><option value="0">No goal</option><option value="250">250 words</option><option value="500" selected>500 words</option><option value="1000">1,000 words</option><option value="2000">2,000 words</option></select></div><progress id="goal-progress" max="500" value="0" aria-label="Writing goal progress"></progress><div class="goal-bottom"><span id="goal-message">Every great piece starts somewhere.</span><span id="goal-value">0 / 500 words</span></div></div>
+        </section>
+
+        <aside class="insights" aria-label="Writing insights">
+          <section class="time-card" aria-labelledby="time-heading"><div class="section-heading"><h2 id="time-heading">A sense of time</h2><span class="estimate-tag">ESTIMATES</span></div><div class="time-row"><span class="time-icon"><svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg></span><div><h3>Reading time</h3><p>At 200 words per minute</p></div><strong id="reading-time">0 sec</strong></div><div class="time-row"><span class="time-icon speaking"><svg class="icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><div><h3>Speaking time</h3><p>At 130 words per minute</p></div><strong id="speaking-time">0 sec</strong></div></section>
+
+          <section class="keyword-card" aria-labelledby="keyword-heading"><div class="section-heading"><h2 id="keyword-heading">Your words, in focus</h2><span class="top-tag">TOP 10</span></div><p class="section-description">Spot the words you come back to.</p><label class="filter-control"><input id="hide-common" type="checkbox"><span>Hide common English words</span></label><div id="keyword-empty" class="keyword-empty"><span class="empty-icon" aria-hidden="true"><svg class="icon"><use href="#icon-spark"/></svg></span><h3>A pattern is waiting to appear.</h3><p>Start writing to see your most-used words and their density.</p></div><div id="keyword-results" hidden><div class="keyword-table-heading" aria-hidden="true"><span>WORD</span><span>USES</span><span>DENSITY</span></div><ol id="keyword-list" class="keyword-list" aria-label="Most frequent words"></ol></div><p class="keyword-footnote">Density = word occurrences ÷ total words.</p></section>
+        </aside>
+      </div>
+
+      <section id="how-it-works" class="how-it-works" aria-labelledby="how-heading"><div class="how-heading"><span class="small-spark" aria-hidden="true">✳</span><h2 id="how-heading">Less counting. More creating.</h2></div><div class="benefits"><div><h3>Instant perspective</h3><p>Your counts and word patterns update while you write. No extra clicks.</p></div><div><h3>A space of your own</h3><p>Your text stays in this tab. No accounts, uploads, or saved drafts.</p></div><div><h3>Made for your next draft</h3><p>From a short caption to a long essay. Paste it in and take a closer look.</p></div></div><details class="counting-details"><summary>A note on how we count</summary><p>Contractions and hyphenated words count as one word. Numbers count too; punctuation and emoji alone do not. Characters count visible Unicode characters, including spaces and line breaks. “Without whitespace” removes spaces, tabs, and line breaks. Paragraphs are text blocks separated by a blank line. Sentence counting recognizes common abbreviations and decimal numbers; unfinished thoughts also count. Sentence boundaries and languages without spaces can be approximate. Time estimates use 200 words per minute for reading and 130 for speaking.</p></details></section>
+    </main>
+
+    <footer class="site-footer"><span class="footer-brand">wordwell<span>.</span></span><span>A small tool for big ideas.</span><span class="footer-note">Made for the love of words.</span></footer>
+    <div class="notification" id="notification" hidden><span id="notification-message" role="status"></span><button id="undo-button" type="button" hidden>Undo</button></div>
+    <p id="live-summary" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    <noscript><p class="noscript-notice">Enable JavaScript to see live counts. Your text will be processed only in your browser.</p></noscript>
+  </body>
+</html>
